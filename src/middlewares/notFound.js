@@ -1,8 +1,7 @@
+import createHttpError from 'http-errors';
+
 const notFoundMiddleware = (req, res, next) => {
-  res.status(404).json({
-    message: 'Not found',
-  });
-  next();
+  next(createHttpError(404, 'Route not found'));
 };
 
 export default notFoundMiddleware;
