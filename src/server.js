@@ -12,7 +12,12 @@ const PORT = Number(env(ENV_VARS.PORT, 3000));
 export const setupServer = () => {
   const app = express();
 
-  app.use(express.json());
+  app.use(
+    express.json({
+      type: ['application/json', 'application/vnd.api+json'],
+    }),
+  );
+
   app.use(cors());
   app.use(
     pino({
@@ -30,7 +35,7 @@ export const setupServer = () => {
 
   app.use(router);
 
-  app.use('*', notFoundMiddleware);
+  app.use(notFoundMiddleware);
 
   app.use(errorHandlerMiddleware);
 
