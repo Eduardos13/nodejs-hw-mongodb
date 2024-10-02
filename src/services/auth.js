@@ -6,10 +6,10 @@ import createHttpError from 'http-errors';
 import { FIFTEEN_MINUTES, ONE_DAY } from '../constants/index.js';
 
 export const registerUser = async (payload) => {
-  const user = await UserCollection.findOne({ email: payload.email });
+  const user = await UserCollection.findOme({ email: payload.email });
   if (user) throw createHttpError(409, 'Email already been used');
 
-  const encryptedPassword = await bcrypt.hash(payload.password, 10);
+  const encryptedPassword = await bcrypt.hash(payload.password, 12);
 
   return await UserCollection.create({
     ...payload,
@@ -43,5 +43,5 @@ export const loginUser = async (payload) => {
 };
 
 export const logoutUser = async (sessionId) => {
-  await SessionCollection.deleteOne({ _id, sessionId });
+  await SessionCollection.deleteOne({ _id: sessionId });
 };
