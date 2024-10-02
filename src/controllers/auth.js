@@ -11,9 +11,7 @@ export const registerUserController = async (req, res, next) => {
       data: { user },
     });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
-    next();
+    next(error);
   }
 };
 
