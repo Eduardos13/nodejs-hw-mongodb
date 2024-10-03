@@ -29,7 +29,7 @@ export const setupServer = () => {
     }),
   );
 
-  app.use(cookieParser);
+  app.use(cookieParser());
 
   app.get('/', (req, res) => {
     res.json({
