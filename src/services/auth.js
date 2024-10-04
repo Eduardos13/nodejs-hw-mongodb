@@ -64,6 +64,13 @@ export const refreshUserSession = async ({ sessionId, refreshToken }) => {
     refreshToken,
   });
 
+  const isAccessTokenExpired =
+    new Date() > new Date(session.refreshTokenValidUntil);
+
+  if (isAccessTokenExpired) {
+    next(createHttpError(401, 'Access token expired'));
+  }
+
   if (!session) {
     throw createHttpError(401, 'Session token expired or invalid');
   }
