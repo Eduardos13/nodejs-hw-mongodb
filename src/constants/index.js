@@ -1,3 +1,5 @@
+import path from 'node:path';
+
 export const ENV_VARS = {
   PORT: 'PORT',
   MONGODB_USER: 'MONGODB_USER',
@@ -23,3 +25,6 @@ export const SMTP = {
 };
 
 export const JWT_SECRET = 'JWT_SECRET';
+
+export const TEMPLATES_DIR = path.join(process.cwd(), 'src', 'templates');
+export const APP_DOMAIN = 'APP_DOMAIN';
