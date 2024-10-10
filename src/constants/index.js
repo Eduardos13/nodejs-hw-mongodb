@@ -28,3 +28,6 @@ export const JWT_SECRET = 'JWT_SECRET';
 
 export const TEMPLATES_DIR = path.join(process.cwd(), 'src', 'templates');
 export const APP_DOMAIN = 'APP_DOMAIN';
+
+export const TEMP_UPLOAD_DIR = path.join(process.cwd(), 'temp');
+export const UPLOAD_DIR = path.join(process.cwd(), 'uploads');
