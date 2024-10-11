@@ -7,6 +7,7 @@ import {
 } from '../services/auth.js';
 import { ONE_DAY } from '../constants/index.js';
 import { refreshUserSession } from '../services/auth.js';
+import createHttpError from 'http-errors';
 
 export const registerUserController = async (req, res, next) => {
   try {
@@ -110,11 +111,14 @@ export const requestResetEmailController = async (req, res, next) => {
     await requestResetToken(req.body.email);
     res.status(200).json({
       status: 200,
-      message: 'Reset password email was successfully sent!',
+      message: 'Reset password email has been successfully sent.',
       data: {},
     });
   } catch (error) {
-    next(error);
+    throw createHttpError(
+      500,
+      'Failed to send the email, please try again later.',
+    );
   }
 };
 
@@ -123,7 +127,7 @@ export const resetPasswordController = async (req, res, next) => {
     await resetPassword(req.body);
     res.status(200).json({
       status: 200,
-      message: 'Password was successfully reset!',
+      message: 'Password has been successfully reset.',
       data: {},
     });
   } catch (error) {
