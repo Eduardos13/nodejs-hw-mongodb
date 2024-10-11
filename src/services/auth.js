@@ -66,6 +66,10 @@ const createSession = () => {
 };
 
 export const refreshUserSession = async ({ sessionId, refreshToken }) => {
+  if (!sessionId || !refreshToken) {
+    throw createHttpError(400, 'Session ID and Refresh token are required');
+  }
+
   const session = await SessionCollection.findOne({
     _id: sessionId,
     refreshToken,
