@@ -39,6 +39,8 @@ export const setupServer = () => {
 
   app.use(router);
 
+  app.use('/uploads', express.static(UPLOAD_DIR));
+
   app.use(notFoundMiddleware);
 
   app.use(errorHandlerMiddleware);
@@ -46,6 +48,4 @@ export const setupServer = () => {
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
   });
-
-  app.use('/uploads', express.static(UPLOAD_DIR));
 };
