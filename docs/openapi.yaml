@@ -45,6 +45,9 @@ paths:
   /auth/resetPwd:
     post:
       $ref: swagger/paths/auth/requestPassword/post.yaml
+  /auth/get-oauth-url:
+    get:
+      $ref: swagger/paths/auth/getOAuthUrl/get.yaml
 components:
   securitySchemes:
     bearerAuth:
