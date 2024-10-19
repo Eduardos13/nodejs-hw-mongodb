@@ -547,12 +547,12 @@
                       "example": "Successfully registered a user!"
                     },
                     "data": {
-                      "type": "object",
-                      "required": [
-                        "name",
-                        "email",
-                        "id"
-                      ]
+                      "properties": {
+                        "user": {
+                          "type": "object",
+                          "$ref": "#/components/schemas/User"
+                        }
+                      }
                     }
                   }
                 }
@@ -660,6 +660,30 @@
             "description": "Link to contacts's photo",
             "type": "string",
             "example": "https://res.cloudinary.com/uqwgdu/image/upload/image.png"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "required": [
+          "name",
+          "email"
+        ],
+        "properties": {
+          "name": {
+            "description": "User's name",
+            "type": "string",
+            "example": "John Doe"
+          },
+          "email": {
+            "description": "User's email address",
+            "type": "string",
+            "example": "dmytro3@example.com"
+          },
+          "id": {
+            "description": "User's id",
+            "type": "string",
+            "example": "65ca67e7ae7f10c88b598384"
           }
         }
       }

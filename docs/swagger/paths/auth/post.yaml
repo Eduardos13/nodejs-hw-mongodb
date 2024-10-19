@@ -45,11 +45,14 @@ responses:
               type: string
               example: Successfully registered a user!
             data:
-              type: object
-              required:
-                - name
-                - email
-                - id
+              properties:
+                user:
+                  type: object
+                  $ref: '../../components/schemas/User.yaml'
+              # required:
+              #   - name
+              #   - email
+              #   - id
   '409':
     description: Email already in use
     content:

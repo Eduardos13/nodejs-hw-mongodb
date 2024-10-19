@@ -2,7 +2,6 @@ type: object
 required:
   - name
   - email
-  - password
 properties:
   name:
     description: "User's name"
@@ -12,8 +11,7 @@ properties:
     description: "User's email address"
     type: string
     example: dmytro3@example.com
-  password:
-    description: 'User's password'
+  id:
+    description: "User's id"
     type: string
-
-
+    example: 65ca67e7ae7f10c88b598384
