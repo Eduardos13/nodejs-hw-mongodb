@@ -1,5 +1,5 @@
 apis:
-  sample@v1:
+  contacts@v1:
     root: docs/openapi.yaml
 extends:
   - recommended

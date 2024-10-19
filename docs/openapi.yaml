@@ -5,7 +5,7 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  description: This is a documentstion for a Contacts app
+  description: This is a documentation for a Contacts app
 tags:
   - name: Contacts
     description: Operations with contacts
@@ -15,6 +15,11 @@ servers:
   - url: http://localhost:3000
   - url: https://nodejs-hw-mongodb-s8m7.onrender.com
 paths:
+  /contacts:
+    get:
+      $ref: swagger/paths/contacts/get.yaml
+    post:
+      $ref: swagger/paths/contacts/post.yaml
   /contacts/{id}:
     get:
       $ref: swagger/paths/contacts/{id}/get.yaml
