@@ -1,8 +1,8 @@
 tags:
   - Auth
-summary: Register new user
-operationId: createUser
-description: 'Create new user'
+summary: Logout user
+operationId: logoutUser
+description: 'Logout with user'
 security:
   - bearerAuth: []
 requestBody:
@@ -11,14 +11,9 @@ requestBody:
       schema:
         type: object
         required:
-          - name
           - email
           - password
         properties:
-          name:
-            description: 'User name'
-            type: string
-            example: 'John Doe'
           email:
             description: 'User email address'
             type: string
@@ -27,8 +22,19 @@ requestBody:
             description: 'User password'
             type: string
 responses:
-  '201':
-    description: Creates an user
+  '204':
+    description: 'Logout user'
+    content:
+      application/json:
+        schema:
+          properties:
+            status:
+              type: integer
+              example: 204
+  '404':
+    $ref: ../../../components/repsponses/404_user.yaml
+  '401':
+    description: Unauthorized error
     content:
       application/json:
         schema:
@@ -40,36 +46,10 @@ responses:
           properties:
             status:
               type: integer
-              example: 201
+              example: 401
             message:
               type: string
-              example: Successfully registered a user!
-            data:
-              properties:
-                user:
-                  type: object
-                  $ref: '../../components/schemas/User.yaml'
-              # required:
-              #   - name
-              #   - email
-              #   - id
-  '409':
-    description: Email already in use
-    content:
-      application/json:
-        schema:
-          type: object
-          required:
-            - status
-            - message
-            - data
-          properties:
-            status:
-              type: integer
-              example: 409
-            message:
-              type: string
-              example: Email already been used
+              example: Unauthorized
             data:
               type: object
               required:
@@ -77,4 +57,4 @@ responses:
               properties:
                 message:
                   type: string
-                  example: 'Email already been used'
+                  example: 'Unauthorized'
