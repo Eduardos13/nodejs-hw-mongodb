@@ -39,6 +39,9 @@ paths:
   /auth/refresh:
     post:
       $ref: swagger/paths/auth/refresh/post.yaml
+  /auth/requestEmail:
+    post:
+      $ref: swagger/paths/auth/requestResetEmail/post.yaml
 components:
   securitySchemes:
     bearerAuth:
