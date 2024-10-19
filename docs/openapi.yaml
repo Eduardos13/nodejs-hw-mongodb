@@ -27,6 +27,27 @@ paths:
       $ref: swagger/paths/contacts/{id}/patch.yaml
     delete:
       $ref: swagger/paths/contacts/{id}/delete.yaml
+  /auth/register:
+    post:
+      $ref: swagger/paths/auth/register/post.yaml
+  /auth/login:
+    post:
+      $ref: swagger/paths/auth/login/post.yaml
+  /auth/logout:
+    post:
+      $ref: swagger/paths/auth/logout/post.yaml
+  /auth/refresh:
+    post:
+      $ref: swagger/paths/auth/refresh/post.yaml
+  /auth/requestEmail:
+    post:
+      $ref: swagger/paths/auth/requestResetEmail/post.yaml
+  /auth/resetPwd:
+    post:
+      $ref: swagger/paths/auth/requestPassword/post.yaml
+  /auth/get-oauth-url:
+    get:
+      $ref: swagger/paths/auth/getOAuthUrl/get.yaml
 components:
   securitySchemes:
     bearerAuth:
