@@ -1,0 +1,28 @@
+tags:
+  - Contacts
+summary: Delete contact by id
+operationId: deleteContact
+description: 'Delete contacts by id'
+security:
+  - bearerAuth: []
+parameters:
+  - in: path
+    name: id
+    required: true
+    schema:
+      type: string
+      example: '65ca67e7ae7f10c88b598384'
+responses:
+  '204':
+    description: 'Deleting contacts'
+    content:
+      application/json:
+        schema:
+          properties:
+            status:
+              type: integer
+              example: 204
+  '401':
+    $ref: ../../../components/repsponses/401.yaml
+  '404':
+    $ref: ../../../components/repsponses/404_contact.yaml
