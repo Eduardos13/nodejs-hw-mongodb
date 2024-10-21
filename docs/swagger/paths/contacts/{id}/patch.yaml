@@ -40,14 +40,10 @@ requestBody:
             enum: ['work', 'home', 'personal']
             type: string
             example: 'work'
-          userId:
-            description: "Contacts's user id - who created this contact"
-            type: string
-            example: 65e4decdd286b30065d54af9
           photo:
             description: "Link to contacts's photo"
             type: string
-            example: https://res.cloudinary.com/uqwgdu/image/upload/image.png
+            format: binary
 responses:
   '200':
     description: Update a student

@@ -207,15 +207,10 @@
                     "type": "string",
                     "example": "work"
                   },
-                  "userId": {
-                    "description": "Contacts's user id - who created this contact",
-                    "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
-                  },
                   "photo": {
                     "description": "Link to contacts's photo",
                     "type": "string",
-                    "example": "https://res.cloudinary.com/uqwgdu/image/upload/image.png"
+                    "format": "binary"
                   }
                 }
               }
@@ -381,15 +376,10 @@
                     "type": "string",
                     "example": "work"
                   },
-                  "userId": {
-                    "description": "Contacts's user id - who created this contact",
-                    "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
-                  },
                   "photo": {
                     "description": "Link to contacts's photo",
                     "type": "string",
-                    "example": "https://res.cloudinary.com/uqwgdu/image/upload/image.png"
+                    "format": "binary"
                   }
                 }
               }
@@ -459,19 +449,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Deleting contacts",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 204
-                    }
-                  }
-                }
-              }
-            }
+            "description": "Deleting contacts"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -726,45 +704,9 @@
             "bearerAuth": []
           }
         ],
-        "requestBody": {
-          "content": {
-            "aplication/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "email",
-                  "password"
-                ],
-                "properties": {
-                  "email": {
-                    "description": "User email address",
-                    "type": "string",
-                    "example": "dmytro3@example.com"
-                  },
-                  "password": {
-                    "description": "User password",
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
         "responses": {
           "204": {
-            "description": "Logout user",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 204
-                    }
-                  }
-                }
-              }
-            }
+            "description": "Logout user"
           },
           "401": {
             "description": "Unauthorized error",
@@ -822,25 +764,6 @@
             "bearerAuth": []
           }
         ],
-        "requestBody": {
-          "content": {
-            "aplication/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "accessToken"
-                ],
-                "properties": {
-                  "accessToken": {
-                    "description": "Session's refresh token",
-                    "type": "string",
-                    "example": "wN9Pcq9IOk3EGQ5IgKgeUv2fMw3NCigAxBa5Dvdo"
-                  }
-                }
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "Refresh user's session",
@@ -1162,7 +1085,41 @@
             }
           },
           "401": {
-            "$ref": "#/components/responses/401"
+            "description": "Unauthorized error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 401
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "message"
+                      ],
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Unauthorized"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
