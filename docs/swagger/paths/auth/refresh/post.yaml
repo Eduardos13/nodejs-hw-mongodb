@@ -5,18 +5,6 @@ operationId: refreshSession
 description: "Refreshing user's session"
 security:
   - bearerAuth: []
-requestBody:
-  content:
-    aplication/json:
-      schema:
-        type: object
-        required:
-          - accessToken
-        properties:
-          accessToken:
-            description: "Session's refresh token"
-            type: string
-            example: wN9Pcq9IOk3EGQ5IgKgeUv2fMw3NCigAxBa5Dvdo
 responses:
   '200':
     description: Refresh user's session
